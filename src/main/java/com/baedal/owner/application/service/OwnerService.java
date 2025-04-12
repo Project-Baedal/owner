@@ -1,6 +1,7 @@
 package com.baedal.owner.application.service;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.baedal.owner.application.command.LoginCommand;
 import com.baedal.owner.application.mapper.OwnerApplicationMapper;
@@ -18,6 +19,7 @@ public class OwnerService implements OwnerUseCase {
 	private final OwnerApplicationMapper mapper;
 
 	@Override
+	@Transactional(readOnly = true)
 	public LoginCommand.Response login(LoginCommand.Request req) {
 		Owner owner = repositoryPort.findActiveUserByAccountAndPassword(req.getAccount(), req.getPassword());
 		return mapper.toLoginResponse(owner);
