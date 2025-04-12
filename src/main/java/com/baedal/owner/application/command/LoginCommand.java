@@ -1,4 +1,4 @@
-package com.baedal.owner.adapter.in.web.dto.command;
+package com.baedal.owner.application.command;
 
 import lombok.Builder;
 import lombok.Getter;

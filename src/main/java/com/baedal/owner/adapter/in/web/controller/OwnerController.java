@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.baedal.owner.adapter.in.web.dto.command.LoginCommand;
+import com.baedal.owner.application.command.LoginCommand;
 import com.baedal.owner.adapter.in.web.dto.request.LoginRequest;
 import com.baedal.owner.adapter.in.web.dto.response.LoginResponse;
 import com.baedal.owner.adapter.in.web.mapper.OwnerWebMapper;
