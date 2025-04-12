@@ -1,6 +1,6 @@
 package com.baedal.owner.application.service;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.baedal.owner.application.command.LoginCommand;
 import com.baedal.owner.application.mapper.OwnerApplicationMapper;
@@ -11,7 +11,7 @@ import com.baedal.owner.domain.model.Owner;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-@Component
+@Service
 public class OwnerService implements OwnerUseCase {
 
 	private final OwnerRepositoryPort repositoryPort;
