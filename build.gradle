@@ -39,6 +39,9 @@ dependencies {
     // Kafka
     implementation("org.springframework.kafka:spring-kafka:3.3.4")
 
+    // Jackson-Datatype-jsr310
+    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.18.3")
+
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
