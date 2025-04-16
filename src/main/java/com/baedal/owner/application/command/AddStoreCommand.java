@@ -1,7 +1,6 @@
 package com.baedal.owner.application.command;
 
-import java.time.LocalDateTime;
-
+import java.time.LocalTime;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -13,8 +12,8 @@ public class AddStoreCommand {
     private String name;
     private String address;
     private String pictureUrl;
-    private LocalDateTime openTime;
-    private LocalDateTime closeTime;
+    private LocalTime openTime;
+    private LocalTime closeTime;
   }
 
 }

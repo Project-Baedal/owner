@@ -1,9 +1,8 @@
 package com.baedal.owner.adapter.in.web.dto.request;
 
-import java.time.LocalDateTime;
-
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
+import java.time.LocalTime;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -33,10 +32,10 @@ public class AddStoreRequest {
 
 	@Schema(description = "영업 시작 시간")
 	@NotBlank
-	private LocalDateTime openTime;
+	private LocalTime openTime;
 
 	@Schema(description = "영업 종료 시간")
 	@NotBlank
-	private LocalDateTime closeTime;
+	private LocalTime closeTime;
 
 }
