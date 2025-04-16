@@ -5,4 +5,5 @@ import com.baedal.owner.domain.model.Owner;
 public interface OwnerRepositoryPort {
 
 	Owner findActiveUserByAccountAndPassword(String account, String password);
+	Owner findById(Long id);
 }

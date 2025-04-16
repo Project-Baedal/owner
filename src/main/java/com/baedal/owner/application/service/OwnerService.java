@@ -29,7 +29,9 @@ public class OwnerService implements OwnerUseCase {
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public void addStore(Long ownerId, AddStoreCommand.Request req) {
+		repositoryPort.findById(ownerId);
 		messageSenderPort.sendAddStore(ownerId, req);
 	}
 }

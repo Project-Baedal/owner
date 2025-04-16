@@ -23,4 +23,10 @@ public class OwnerRepositoryAdapter implements OwnerRepositoryPort {
 		return mapper.entityToDomain(entity);
 	}
 
+	@Override
+	public Owner findById(Long id) {
+		OwnerEntity entity = ownerEntityReader.findById(id);
+		return mapper.entityToDomain(entity);
+	}
+
 }
