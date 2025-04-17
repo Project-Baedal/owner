@@ -8,5 +8,5 @@ import com.baedal.owner.domain.model.Owner;
 @Mapper(componentModel = "spring")
 public interface OwnerPersistenceMapper {
 
-	Owner entityToDomain(OwnerEntity ownerEntity);
+  Owner entityToDomain(OwnerEntity ownerEntity);
 }
