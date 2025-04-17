@@ -7,6 +7,6 @@ import lombok.Getter;
 @Getter
 public class Owner {
 
-	private Long id;
+  private Long id;
 
 }

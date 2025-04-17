@@ -20,21 +20,21 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class OwnerController {
 
-	private final OwnerWebMapper mapper;
-	private final OwnerUseCase ownerUseCase;
+  private final OwnerWebMapper mapper;
+  private final OwnerUseCase ownerUseCase;
 
-	@PostMapping("/login")
-	public LoginResponse login(@RequestBody LoginRequest req) {
-		LoginCommand.Request command = mapper.loginToCommand(req);
-		LoginCommand.Response response = ownerUseCase.login(command);
-		return mapper.loginToResponse(response);
-	}
+  @PostMapping("/login")
+  public LoginResponse login(@RequestBody LoginRequest req) {
+    LoginCommand.Request command = mapper.loginToCommand(req);
+    LoginCommand.Response response = ownerUseCase.login(command);
+    return mapper.loginToResponse(response);
+  }
 
-	@PostMapping("/addStore")
-	public void addStore(@RequestBody AddStoreRequest req) {
-		AddStoreCommand.Request command = mapper.addStoreToCommand(req);
-		// note. 인증 관련 코드 작성 이후 변경 예정
-		Long ownerId = 1L;
-		ownerUseCase.addStore(ownerId, command);
-	}
+  @PostMapping("/addStore")
+  public void addStore(@RequestBody AddStoreRequest req) {
+    AddStoreCommand.Request command = mapper.addStoreToCommand(req);
+    // note. 인증 관련 코드 작성 이후 변경 예정
+    Long ownerId = 1L;
+    ownerUseCase.addStore(ownerId, command);
+  }
 }

@@ -24,7 +24,9 @@ public class OwnerService implements OwnerUseCase {
 	@Override
 	@Transactional(readOnly = true)
 	public LoginCommand.Response login(LoginCommand.Request req) {
-		Owner owner = repositoryPort.findActiveUserByAccountAndPassword(req.getAccount(), req.getPassword());
+		Owner owner = repositoryPort.findActiveUserByAccountAndPassword(
+				req.getAccount(), req.getPassword()
+		);
 		return mapper.toLoginResponse(owner);
 	}
 

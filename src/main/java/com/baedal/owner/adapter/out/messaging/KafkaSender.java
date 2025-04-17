@@ -11,11 +11,11 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class KafkaSender {
 
-	private final KafkaTemplate<String, String> kafkaTemplate;
+  private final KafkaTemplate<String, String> kafkaTemplate;
 
-	public void sendMessage(String topic, String key, Object message) {
-		String json = ObjectMapperUtil.toJson(message);
-		kafkaTemplate.send(topic, key, json);
-	}
+  public void sendMessage(String topic, String key, Object message) {
+    String json = ObjectMapperUtil.toJson(message);
+    kafkaTemplate.send(topic, key, json);
+  }
 
 }

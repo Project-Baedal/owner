@@ -9,6 +9,7 @@ public class AddStoreCommand {
   @Getter
   @Builder
   public static class Request {
+
     private String name;
     private String address;
     private String pictureUrl;

@@ -18,14 +18,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class OwnerEntity {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-	@Column(nullable = false)
-	private String account;
+  @Column(nullable = false)
+  private String account;
 
-	@Column(nullable = false)
-	private String password;
+  @Column(nullable = false)
+  private String password;
 
 }

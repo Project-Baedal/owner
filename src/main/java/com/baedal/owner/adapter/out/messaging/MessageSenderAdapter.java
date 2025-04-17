@@ -12,10 +12,10 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class MessageSenderAdapter implements MessageSenderPort {
 
-	private final KafkaSender kafkaSender;
+  private final KafkaSender kafkaSender;
 
-	@Override
-	public void sendAddStore(Long ownerId, AddStoreCommand.Request req) {
-		kafkaSender.sendMessage("store.addStore", ownerId.toString(), req);
-	}
+  @Override
+  public void sendAddStore(Long ownerId, AddStoreCommand.Request req) {
+    kafkaSender.sendMessage("store.addStore", ownerId.toString(), req);
+  }
 }

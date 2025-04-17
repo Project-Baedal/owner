@@ -14,19 +14,19 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class OwnerRepositoryAdapter implements OwnerRepositoryPort {
 
-	private final OwnerEntityReader ownerEntityReader;
-	private final OwnerPersistenceMapper mapper;
+  private final OwnerEntityReader ownerEntityReader;
+  private final OwnerPersistenceMapper mapper;
 
-	@Override
-	public Owner findActiveUserByAccountAndPassword(String account, String password) {
-		OwnerEntity entity = ownerEntityReader.findByAccountAndPassword(account, password);
-		return mapper.entityToDomain(entity);
-	}
+  @Override
+  public Owner findActiveUserByAccountAndPassword(String account, String password) {
+    OwnerEntity entity = ownerEntityReader.findByAccountAndPassword(account, password);
+    return mapper.entityToDomain(entity);
+  }
 
-	@Override
-	public Owner findById(Long id) {
-		OwnerEntity entity = ownerEntityReader.findById(id);
-		return mapper.entityToDomain(entity);
-	}
+  @Override
+  public Owner findById(Long id) {
+    OwnerEntity entity = ownerEntityReader.findById(id);
+    return mapper.entityToDomain(entity);
+  }
 
 }
