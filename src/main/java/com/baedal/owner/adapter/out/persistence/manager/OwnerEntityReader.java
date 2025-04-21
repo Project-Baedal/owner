@@ -1,5 +1,6 @@
 package com.baedal.owner.adapter.out.persistence.manager;
 
+import org.apache.kafka.common.protocol.types.Field.Str;
 import org.springframework.stereotype.Component;
 
 import com.baedal.owner.adapter.out.persistence.entity.OwnerEntity;
@@ -13,10 +14,13 @@ public class OwnerEntityReader {
 
   private final OwnerJpaRepository ownerJpaRepository;
 
-  // FIXME: 비밀번호는 조회와 함께 사용할 수 없음
-  public OwnerEntity findByAccountAndPassword(String account, String password) {
-    return ownerJpaRepository.findByEmail(account)
+  public OwnerEntity findByEmail(String email) {
+    return ownerJpaRepository.findByEmail(email)
         .orElseThrow(() -> new RuntimeException("잘못된 아이디/비밀번호 입니다."));
+  }
+
+  public Boolean emailAlreadyExist(String email) {
+    return ownerJpaRepository.findByEmail(email).isPresent();
   }
 
   public OwnerEntity findById(Long id) {

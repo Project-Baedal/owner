@@ -26,6 +26,14 @@ public class OwnerEntity {
   private String email;
 
   @Column(nullable = false)
+  private String name;
+
+  @Column(nullable = false)
   private String password;
 
+  public OwnerEntity(String email, String name, String password) {
+    this.email = email;
+    this.name = name;
+    this.password = password;
+  }
 }

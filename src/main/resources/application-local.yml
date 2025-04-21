@@ -1,7 +1,7 @@
-spring:
-  application:
-    name: owner
+server:
+  port: 8082
 
+spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/owner
     username: owner

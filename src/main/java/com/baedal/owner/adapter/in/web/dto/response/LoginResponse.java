@@ -7,6 +7,6 @@ import lombok.Getter;
 @Builder
 public class LoginResponse {
 
-  private Long ownerId;
+  private Long id;
 
 }

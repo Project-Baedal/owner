@@ -1,14 +1,12 @@
 package com.baedal.owner.adapter.out.persistence.adapter;
 
-import org.springframework.stereotype.Component;
-
 import com.baedal.owner.adapter.out.persistence.entity.OwnerEntity;
 import com.baedal.owner.adapter.out.persistence.manager.OwnerEntityReader;
 import com.baedal.owner.adapter.out.persistence.mapper.OwnerPersistenceMapper;
 import com.baedal.owner.application.port.out.OwnerRepositoryPort;
 import com.baedal.owner.domain.model.Owner;
-
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
@@ -18,15 +16,13 @@ public class OwnerRepositoryAdapter implements OwnerRepositoryPort {
   private final OwnerPersistenceMapper mapper;
 
   @Override
-  public Owner findActiveUserByAccountAndPassword(String account, String password) {
-    OwnerEntity entity = ownerEntityReader.findByAccountAndPassword(account, password);
-    return mapper.entityToDomain(entity);
-  }
-
-  @Override
   public Owner findById(Long id) {
     OwnerEntity entity = ownerEntityReader.findById(id);
     return mapper.entityToDomain(entity);
   }
 
+  @Override
+  public boolean emailAlreadyExist(String email) {
+    return ownerEntityReader.emailAlreadyExist(email);
+  }
 }
