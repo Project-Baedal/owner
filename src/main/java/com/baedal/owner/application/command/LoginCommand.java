@@ -9,7 +9,7 @@ public class LoginCommand {
   @Builder
   public static class Request {
 
-    private String account;
+    private String email;
     private String password;
   }
 
@@ -17,6 +17,6 @@ public class LoginCommand {
   @Builder
   public static class Response {
 
-    private Long ownerId;
+    private Long id;
   }
 }
