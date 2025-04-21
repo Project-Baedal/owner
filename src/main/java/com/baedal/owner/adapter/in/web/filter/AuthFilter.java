@@ -22,13 +22,13 @@ public class AuthFilter extends OncePerRequestFilter {
       HttpServletResponse response,
       FilterChain chain) throws IOException, ServletException {
 
-    String customerId = request.getHeader("X-User-Id");
+    String ownerId = request.getHeader("X-User-Id");
     String role = request.getHeader("X-User-Role");
     String authority = "ROLE_" + role;
 
-    if (customerId != null && role != null) {
+    if (ownerId != null && role != null) {
       Authentication auth = new UsernamePasswordAuthenticationToken(
-          Long.parseLong(customerId),
+          Long.parseLong(ownerId),
           null,
           List.of(new SimpleGrantedAuthority(authority))
       );
