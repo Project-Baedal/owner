@@ -4,7 +4,7 @@ import com.baedal.owner.adapter.out.persistence.entity.OwnerEntity;
 import com.baedal.owner.adapter.out.persistence.repository.OwnerJpaRepository;
 import com.baedal.owner.application.command.SignupCommand;
 import com.baedal.owner.application.command.SignupCommand.Request;
-import com.baedal.owner.application.port.in.OwnerSignupUsecase;
+import com.baedal.owner.application.port.in.OwnerSignUpUsecase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -12,14 +12,14 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
-public class OwnerSignupService implements OwnerSignupUsecase {
+public class OwnerSignUpService implements OwnerSignUpUsecase {
 
   private final OwnerJpaRepository repository;
 
   private final PasswordEncoder passwordEncoder;
 
   @Transactional
-  public SignupCommand.Response signup(Request req) {
+  public SignupCommand.Response signUp(Request req) {
     OwnerEntity entity = repository.save(new OwnerEntity(
         req.getEmail(),
         req.getName(),

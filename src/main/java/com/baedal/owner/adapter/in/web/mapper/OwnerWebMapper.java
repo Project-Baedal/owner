@@ -2,9 +2,9 @@ package com.baedal.owner.adapter.in.web.mapper;
 
 import com.baedal.owner.adapter.in.web.dto.request.AddStoreRequest;
 import com.baedal.owner.adapter.in.web.dto.request.LoginRequest;
-import com.baedal.owner.adapter.in.web.dto.request.SignupRequest;
+import com.baedal.owner.adapter.in.web.dto.request.SignUpRequest;
 import com.baedal.owner.adapter.in.web.dto.response.LoginResponse;
-import com.baedal.owner.adapter.in.web.dto.response.SignupResponse;
+import com.baedal.owner.adapter.in.web.dto.response.SignUpResponse;
 import com.baedal.owner.application.command.AddStoreCommand;
 import com.baedal.owner.application.command.LoginCommand;
 import com.baedal.owner.application.command.SignupCommand;
@@ -22,7 +22,7 @@ public interface OwnerWebMapper {
   AddStoreCommand.Request addStoreToCommand(AddStoreRequest addStoreRequest);
 
   // 가입
-  SignupCommand.Request signupToCommand(SignupRequest request);
+  SignupCommand.Request signupToCommand(SignUpRequest request);
 
-  SignupResponse signupToResponse(SignupCommand.Response signupCommand);
+  SignUpResponse signupToResponse(SignupCommand.Response signupCommand);
 }
