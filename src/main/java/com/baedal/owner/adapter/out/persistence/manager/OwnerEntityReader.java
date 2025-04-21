@@ -13,8 +13,9 @@ public class OwnerEntityReader {
 
   private final OwnerJpaRepository ownerJpaRepository;
 
+  // FIXME: 비밀번호는 조회와 함께 사용할 수 없음
   public OwnerEntity findByAccountAndPassword(String account, String password) {
-    return ownerJpaRepository.findByAccountAndPassword(account, password)
+    return ownerJpaRepository.findByEmail(account)
         .orElseThrow(() -> new RuntimeException("잘못된 아이디/비밀번호 입니다."));
   }
 

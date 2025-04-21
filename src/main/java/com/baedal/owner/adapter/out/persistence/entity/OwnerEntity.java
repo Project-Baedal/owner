@@ -23,7 +23,7 @@ public class OwnerEntity {
   private Long id;
 
   @Column(nullable = false)
-  private String account;
+  private String email;
 
   @Column(nullable = false)
   private String password;
