@@ -3,3 +3,7 @@ spring:
     name: owner
   profiles:
     active: local
+
+security:
+  permit-all:
+    urls: /v0/login, /v0/signup, /error
