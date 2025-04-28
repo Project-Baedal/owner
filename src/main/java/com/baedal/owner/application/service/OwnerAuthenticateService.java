@@ -1,12 +1,10 @@
 package com.baedal.owner.application.service;
 
-import com.baedal.owner.adapter.out.persistence.entity.OwnerEntity;
-import com.baedal.owner.adapter.out.persistence.repository.OwnerJpaRepository;
 import com.baedal.owner.application.command.LoginCommand;
 import com.baedal.owner.application.command.SignupCommand;
-import com.baedal.owner.application.command.SignupCommand.Request;
 import com.baedal.owner.application.mapper.OwnerApplicationMapper;
 import com.baedal.owner.application.port.in.OwnerAuthenticateUsecase;
+import com.baedal.owner.application.port.out.OwnerRepositoryPort;
 import com.baedal.owner.application.service.UserDetailServiceImpl.UserDetailsImpl;
 import com.baedal.owner.domain.model.Owner;
 import lombok.RequiredArgsConstructor;
@@ -21,7 +19,7 @@ public class OwnerAuthenticateService implements OwnerAuthenticateUsecase {
 
   private final UserDetailsService userDetailsService;
 
-  private final OwnerJpaRepository repository;
+  private final OwnerRepositoryPort ownerRepositoryPort;
 
   private final OwnerApplicationMapper mapper;
 
@@ -41,14 +39,12 @@ public class OwnerAuthenticateService implements OwnerAuthenticateUsecase {
   }
 
   @Transactional
-  public SignupCommand.Response signUp(Request req) {
-    OwnerEntity entity = repository.save(new OwnerEntity(
+  public SignupCommand.Response signUp(SignupCommand.Request req) {
+    Long ownerId = ownerRepositoryPort.save(
         req.getEmail(),
         req.getName(),
-        passwordEncoder.encode(req.getPassword())));
+        passwordEncoder.encode(req.getPassword()));
 
-    return SignupCommand.Response.builder()
-        .id(entity.getId())
-        .build();
+    return mapper.toResponse(ownerId);
   }
 }

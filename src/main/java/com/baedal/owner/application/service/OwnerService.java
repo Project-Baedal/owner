@@ -4,6 +4,7 @@ import com.baedal.owner.application.command.AddStoreCommand;
 import com.baedal.owner.application.port.in.OwnerUseCase;
 import com.baedal.owner.application.port.out.MessageSenderPort;
 import com.baedal.owner.application.port.out.OwnerRepositoryPort;
+import com.baedal.owner.domain.model.Owner;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,7 +20,7 @@ public class OwnerService implements OwnerUseCase {
   @Override
   @Transactional(readOnly = true)
   public void addStore(Long ownerId, AddStoreCommand.Request req) {
-    repositoryPort.findById(ownerId);
+    Owner owner = repositoryPort.findById(ownerId);
     messageSenderPort.sendAddStore(ownerId, req);
   }
 }

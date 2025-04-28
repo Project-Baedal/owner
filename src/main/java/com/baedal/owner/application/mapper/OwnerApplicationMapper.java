@@ -1,6 +1,7 @@
 package com.baedal.owner.application.mapper;
 
 import com.baedal.owner.application.command.LoginCommand;
+import com.baedal.owner.application.command.SignupCommand;
 import com.baedal.owner.application.service.UserDetailServiceImpl.UserDetailsImpl;
 import com.baedal.owner.domain.model.Owner;
 import org.mapstruct.Mapper;
@@ -14,4 +15,6 @@ public interface OwnerApplicationMapper {
 
   @Mapping(target = "id", source = "u.owner.id")
   Owner userDetailsToDomain(UserDetailsImpl u);
+
+  SignupCommand.Response toResponse(Long id);
 }

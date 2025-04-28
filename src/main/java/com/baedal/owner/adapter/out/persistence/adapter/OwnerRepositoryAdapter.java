@@ -1,6 +1,7 @@
 package com.baedal.owner.adapter.out.persistence.adapter;
 
 import com.baedal.owner.adapter.out.persistence.entity.OwnerEntity;
+import com.baedal.owner.adapter.out.persistence.manager.OwnerEntityCreator;
 import com.baedal.owner.adapter.out.persistence.manager.OwnerEntityReader;
 import com.baedal.owner.adapter.out.persistence.mapper.OwnerPersistenceMapper;
 import com.baedal.owner.application.port.out.OwnerRepositoryPort;
@@ -13,6 +14,9 @@ import org.springframework.stereotype.Component;
 public class OwnerRepositoryAdapter implements OwnerRepositoryPort {
 
   private final OwnerEntityReader ownerEntityReader;
+
+  private final OwnerEntityCreator ownerEntityCreator;
+
   private final OwnerPersistenceMapper mapper;
 
   @Override
@@ -24,5 +28,11 @@ public class OwnerRepositoryAdapter implements OwnerRepositoryPort {
   @Override
   public boolean emailAlreadyExist(String email) {
     return ownerEntityReader.emailAlreadyExist(email);
+  }
+
+  @Override
+  public Long save(String email, String name, String password) {
+    return ownerEntityCreator.save(email, name, password)
+        .getId();
   }
 }
