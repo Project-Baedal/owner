@@ -9,7 +9,6 @@ import com.baedal.owner.application.port.out.OwnerRepositoryPort;
 import com.baedal.owner.application.service.UserDetailServiceImpl.UserDetailsImpl;
 import com.baedal.owner.domain.model.Owner;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -39,9 +38,7 @@ public class OwnerService implements OwnerUseCase {
       throw new IllegalArgumentException("Invalid email or password");
     }
 
-    Owner owner = Owner.builder()
-        .id(user.owner().getId())
-        .build();
+    Owner owner = mapper.userDetailsToDomain(user);
     return mapper.toLoginResponse(owner);
   }
 
