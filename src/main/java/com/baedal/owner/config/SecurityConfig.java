@@ -4,6 +4,7 @@ import com.baedal.owner.adapter.in.web.filter.AuthFilter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -42,5 +43,12 @@ public class SecurityConfig {
             .requestMatchers(permitAllUrls).permitAll()
             .anyRequest().authenticated())
         .build();
+  }
+
+  @Bean
+  public AuthenticationManager authenticationManager() {
+    return authentication -> {
+      throw new UnsupportedOperationException("Custom AuthFilter(JWT) handles authentication.");
+    };
   }
 }

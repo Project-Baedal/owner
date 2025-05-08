@@ -5,10 +5,8 @@ import com.baedal.owner.application.command.SignupCommand;
 import com.baedal.owner.application.mapper.OwnerApplicationMapper;
 import com.baedal.owner.application.port.in.OwnerAuthenticateUsecase;
 import com.baedal.owner.application.port.out.OwnerRepositoryPort;
-import com.baedal.owner.application.service.UserDetailServiceImpl.UserDetailsImpl;
-import com.baedal.owner.domain.model.Owner;
+import com.baedal.owner.domain.model.OwnerAuthentication;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,25 +15,22 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class OwnerAuthenticateService implements OwnerAuthenticateUsecase {
 
-  private final UserDetailsService userDetailsService;
-
   private final OwnerRepositoryPort ownerRepositoryPort;
-
-  private final OwnerApplicationMapper mapper;
 
   private final PasswordEncoder passwordEncoder;
 
+  private final OwnerApplicationMapper mapper;
+
   @Transactional(readOnly = true)
   public LoginCommand.Response login(LoginCommand.Request req) {
-    UserDetailsImpl user = (UserDetailsImpl) userDetailsService.loadUserByUsername(req.getEmail());
+    OwnerAuthentication auth = ownerRepositoryPort.findByEmail(req.getEmail());
 
-    if (!passwordEncoder.matches(req.getPassword(), user.getPassword())) {
+    if (!passwordEncoder.matches(req.getPassword(), auth.getEncryptedPassword())) {
       // FIXME: Define Exception Class
-      throw new IllegalArgumentException("Invalid email or password");
+      throw new IllegalArgumentException("Wrong email or password");
     }
 
-    Owner owner = mapper.userDetailsToDomain(user);
-    return mapper.toLoginResponse(owner);
+    return mapper.toLoginResponse(auth);
   }
 
   @Transactional
