@@ -7,7 +7,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,9 +14,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @Table(name = "owners")
-@AllArgsConstructor(access = AccessLevel.PROTECTED)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Builder
 public class OwnerEntity {
 
   @Id
@@ -33,6 +30,7 @@ public class OwnerEntity {
   @Column(nullable = false)
   private String password;
 
+  @Builder
   public OwnerEntity(String email, String name, String password) {
     this.email = email;
     this.name = name;
