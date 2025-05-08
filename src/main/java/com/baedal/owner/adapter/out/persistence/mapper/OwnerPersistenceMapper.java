@@ -9,4 +9,6 @@ import com.baedal.owner.domain.model.Owner;
 public interface OwnerPersistenceMapper {
 
   Owner entityToDomain(OwnerEntity ownerEntity);
+
+  OwnerEntity toEntity(String email, String name, String password);
 }

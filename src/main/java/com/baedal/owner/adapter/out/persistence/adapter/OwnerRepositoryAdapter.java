@@ -32,7 +32,8 @@ public class OwnerRepositoryAdapter implements OwnerRepositoryPort {
 
   @Override
   public Long save(String email, String name, String password) {
-    return ownerEntityCreator.save(email, name, password)
+    OwnerEntity entity = mapper.toEntity(email, name, password);
+    return ownerEntityCreator.save(entity)
         .getId();
   }
 }

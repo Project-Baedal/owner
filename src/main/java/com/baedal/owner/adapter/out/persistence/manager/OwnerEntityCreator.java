@@ -11,11 +11,7 @@ public class OwnerEntityCreator {
 
   private final OwnerJpaRepository repository;
 
-  public OwnerEntity save(String email, String name, String password) {
-    return repository.save(OwnerEntity.builder()
-        .email(email)
-        .name(name)
-        .password(password)
-        .build());
+  public OwnerEntity save(OwnerEntity entity) {
+    return repository.save(entity);
   }
 }
