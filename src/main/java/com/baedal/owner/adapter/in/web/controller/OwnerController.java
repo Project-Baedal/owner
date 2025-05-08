@@ -18,11 +18,13 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
 @Slf4j
+@RequestMapping("/api/owner/v0")
 public class OwnerController {
 
   private final OwnerWebMapper mapper;
@@ -31,14 +33,14 @@ public class OwnerController {
 
   private final OwnerAuthenticateUsecase authenticateUsecase;
 
-  @PostMapping("/v0/login")
+  @PostMapping("/login")
   public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest req) {
     LoginCommand.Request command = mapper.loginToCommand(req);
     LoginCommand.Response commandResponse = authenticateUsecase.login(command);
     return ResponseEntity.ok(mapper.loginToResponse(commandResponse));
   }
 
-  @PostMapping("/v0/signup")
+  @PostMapping("/signup")
   public ResponseEntity<SignUpResponse> signUp(@RequestBody SignUpRequest request) {
     SignupCommand.Request command = mapper.signupToCommand(request);
     SignupCommand.Response commandResponse = authenticateUsecase.signUp(command);
@@ -46,7 +48,7 @@ public class OwnerController {
   }
 
   @PreAuthorize("hasRole('OWNER')")
-  @PostMapping("/v0/addStore")
+  @PostMapping("/addStore")
   public ResponseEntity<Void> addStore(
       @RequestBody AddStoreRequest req,
       @AuthenticationPrincipal Long ownerId) {

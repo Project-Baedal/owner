@@ -1,14 +1,4 @@
-server:
-  port: 8082
-
 spring:
-#  datasource:
-#    url: jdbc:postgresql://localhost:5432/owner
-#    username: owner
-#    password: owner
-#    driver-class-name: org.postgresql.Driver
-
-
   jpa:
     hibernate:
       ddl-auto: update
@@ -29,4 +19,4 @@ logging:
 
 security:
   permit-all:
-    urls: /v0/login, /v0/signup, /error, /swagger-ui/**, /v3/api-docs/**, /swagger-resources/**
+    urls: /api/**/login, /api/**/signup, /error, /swagger-ui/**, /v3/api-docs/**, /swagger-resources/**
