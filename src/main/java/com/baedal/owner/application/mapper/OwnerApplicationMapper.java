@@ -1,16 +1,15 @@
 package com.baedal.owner.application.mapper;
 
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-
 import com.baedal.owner.application.command.LoginCommand;
-import com.baedal.owner.domain.model.Owner;
+import com.baedal.owner.application.command.SignupCommand;
+import com.baedal.owner.domain.model.OwnerAuthentication;
+import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
 public interface OwnerApplicationMapper {
 
   // 로그인
-  @Mapping(target = "ownerId", source = "id")
-  LoginCommand.Response toLoginResponse(Owner owner);
+  LoginCommand.Response toLoginResponse(OwnerAuthentication owner);
 
+  SignupCommand.Response toResponse(Long id);
 }

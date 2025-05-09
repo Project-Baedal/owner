@@ -7,14 +7,13 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Getter
 @Table(name = "owners")
-@AllArgsConstructor(access = AccessLevel.PROTECTED)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class OwnerEntity {
 
@@ -22,10 +21,19 @@ public class OwnerEntity {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
+  @Column(unique = true, nullable = false)
+  private String email;
+
   @Column(nullable = false)
-  private String account;
+  private String name;
 
   @Column(nullable = false)
   private String password;
 
+  @Builder
+  public OwnerEntity(String email, String name, String password) {
+    this.email = email;
+    this.name = name;
+    this.password = password;
+  }
 }

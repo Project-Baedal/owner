@@ -8,5 +8,5 @@ import com.baedal.owner.adapter.out.persistence.entity.OwnerEntity;
 
 public interface OwnerJpaRepository extends JpaRepository<OwnerEntity, Long> {
 
-  Optional<OwnerEntity> findByAccountAndPassword(String account, String password);
+  Optional<OwnerEntity> findByEmail(String email);
 }
