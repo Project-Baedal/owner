@@ -19,4 +19,4 @@ logging:
 
 security:
   permit-all:
-    urls: /api/**/login, /api/**/signup, /error, /swagger-ui/**, /v3/api-docs/**, /swagger-resources/**
+    urls: /api/owner/public/**, /error, /swagger-ui/**, /v3/api-docs/**, /swagger-resources/**

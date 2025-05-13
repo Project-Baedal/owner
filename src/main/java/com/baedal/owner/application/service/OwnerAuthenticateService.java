@@ -3,7 +3,7 @@ package com.baedal.owner.application.service;
 import com.baedal.owner.application.command.LoginCommand;
 import com.baedal.owner.application.command.SignupCommand;
 import com.baedal.owner.application.mapper.OwnerApplicationMapper;
-import com.baedal.owner.application.port.in.OwnerAuthenticateUsecase;
+import com.baedal.owner.application.port.in.OwnerAuthenticateUseCase;
 import com.baedal.owner.application.port.out.OwnerRepositoryPort;
 import com.baedal.owner.domain.model.OwnerAuthentication;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
-public class OwnerAuthenticateService implements OwnerAuthenticateUsecase {
+public class OwnerAuthenticateService implements OwnerAuthenticateUseCase {
 
   private final OwnerRepositoryPort ownerRepositoryPort;
 
